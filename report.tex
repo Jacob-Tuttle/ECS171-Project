@@ -1,10 +1,28 @@
 \documentclass[11pt]{article}
 \usepackage{graphicx}
-\usepackage{lipsum}
-\linespread{1}
-\title{Credit Score Classification}
+\usepackage{fancyhdr}
+\usepackage[margin=1.5in]{geometry}
 
+\linespread{1}
+\pagestyle{fancy}
+\title{\textbf{Credit Score Classification}}
 \author{Kyle Jow, Jimmy Nguyen, Kyle Pickle, Jacob Tuttle, Kris Wong}
+\date{December 2023}
+
 \begin{document}
+\pagenumbering{gobble}
 \maketitle
+\newpage
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\fancyhf{} % clear header and footer
+\fancyhead[R]{Credit Score Classification}
+\fancyfoot[R]{\thepage}
+\section*{Background}
+A common problem in the finance and banking industry is assessing the risk 
+involved in lending someone money. Typically, a credit score is used to determine 
+whether a person is a stable borrower or not. This can be a difficult task with 
+many factors to take into account when deciding someone's credit score.
+
+
 \end{document}
