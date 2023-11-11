@@ -1,7 +1,9 @@
 
 .idea/
-.aux/
-.fdb_latexmk/
-.fls/
-.log/
-.synctex.gz/
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+# Jupyter Notebook
+.ipynb_checkpoints
