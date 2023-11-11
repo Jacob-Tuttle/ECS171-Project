@@ -1,8 +1,14 @@
-\documentclass[11pt]{article}
+\documentclass{article}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage[margin=1.5in]{geometry}
-
+% Introduction and background (1 page)
+% Literature review (1/2 page)
+% Dataset Description and exploratory data analysis of the dataset (1-2 page)
+% Proposed methodology (1 page)
+% Experimental results (2-3 pages)
+% Conclusion and discussion -- you can include the project roadmap here too (1/2 page)
+% References (no limit)
 \linespread{1}
 \pagestyle{fancy}
 \title{\textbf{Credit Score Classification}}
@@ -18,11 +24,34 @@
 \fancyhf{} % clear header and footer
 \fancyhead[R]{Credit Score Classification}
 \fancyfoot[R]{\thepage}
-\section*{Background}
+\section*{Introduction and background}
 A common problem in the finance and banking industry is assessing the risk 
 involved in lending someone money. Typically, a credit score is used to determine 
 whether a person is a stable borrower or not. This can be a difficult task with 
 many factors to take into account when deciding someone's credit score.
+\newpage
+\section*{Literature review}
 
+\newpage
+\section*{Dataset description and exploratory data analysis}
+The dataset contains 27 features. The features we will be focusing on in order
+to classify a person's credit score into either good, standard, or poor credit
+will be these features: Credit Mix, Number of days past payment due date, Number
+of delayed payments, Outstanding debt, Credit utilization, Credit history age.
+We make this decision based on how traditional credit scores are determined,
+such as a FICO credit score.
+\newpage
+\section*{Proposed methodology}
+
+\newpage
+\section*{Experimental results}
+
+\newpage
+\section*{Conclusion and discussion}
+
+\newpage
+\section*{References}
+\textbf{Dataset}:\\
+https://www.kaggle.com/datasets/parisrohan/credit-score-classification/data
 
 \end{document}
