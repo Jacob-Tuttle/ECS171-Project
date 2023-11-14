@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 from io import StringIO
 
+st.header('This is a header with a divider', divider='blue')
+
 uploaded_file = st.file_uploader("Upload CSV File")
 if uploaded_file is not None:
     # To read file as bytes:
