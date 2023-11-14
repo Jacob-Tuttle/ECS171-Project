@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from io import StringIO
 
-st.header('This is a header with a divider', divider='blue')
+st.header('ECS-171 Project - Classify Credit Score', divider='blue')
 
 uploaded_file = st.file_uploader("Upload CSV File")
 if uploaded_file is not None:
