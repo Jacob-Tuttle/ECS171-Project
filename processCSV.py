@@ -1,26 +1,21 @@
-import csv
+import streamlit as st
 import pandas as pd
-import flask
+from io import StringIO
 
-app = flask.Flask(__name__)
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+    # To read file as bytes:
+    bytes_data = uploaded_file.getvalue()
+    st.write(bytes_data)
 
-@app.route("/upload", methods=["PUT"])
-def upload():
-  csv_file = flask.request.files["csvfile"]
-  csv_filename = csv_file.filename
+    # To convert to a string based IO:
+    stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+    st.write(stringio)
 
-  # Save the CSV file to the server
-  csv_file.save(csv_filename)
+    # To read file as string:
+    string_data = stringio.read()
+    st.write(string_data)
 
-  # Read the CSV file into a Pandas DataFrame
-  df = pd.read_csv(csv_filename)
-
-  # Manipulate the DataFrame with Python
-
-  # Print the DataFrame to the home page
-  output = df.to_html()
-
-  return flask.render_template("index.html", output=output)
-
-if __name__ == "__main__":
-  app.run(debug=True)
+    # Can be used wherever a "file-like" object is accepted:
+    dataframe = pd.read_csv(uploaded_file)
+    st.write(dataframe)
