@@ -1,6 +1,30 @@
 import streamlit as st
 import pandas as pd
 from io import StringIO
+import warnings  
+warnings.filterwarnings("ignore")
+import matplotlib.pyplot as plt
+%matplotlib inline
+import seaborn as sns
+sns.set(color_codes=True)
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import plotly.figure_factory as ff
+
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
+from sklearn import preprocessing
+from sklearn.impute import SimpleImputer
+
+from IPython.display import display
+
+from sklearn.svm import OneClassSVM
+from numpy import where
+from pathlib import Path
 
 st.header('ECS-171 Project - Classify Credit Score', divider='blue')
 
@@ -20,6 +44,8 @@ if uploaded_file is not None:
     # Can be used wherever a "file-like" object is accepted:https://github.com/Jacob-Tuttle/ECS171-Project/blob/Website/website/home-page.py
     dataframe = pd.read_csv(uploaded_file)
     DF = pd.DataFrame(dataframe)
+
+
 
 drop = ['ID', 'Customer_ID', 'Month', 'Name', 'SSN', 'Occupation', 'Type_of_Loan', 'Credit_Mix', 'Credit_History_Age', 'Payment_of_Min_Amount', 'Payment_Behaviour',
         'Age', 'Annual_Income', 'Num_Bank_Accounts', 'Num_Credit_Card', 'Interest_Rate', 'Num_of_Loan',  'Num_Credit_Inquiries',
