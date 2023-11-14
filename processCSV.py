@@ -1,20 +1,23 @@
 import csv
-import flask
-import io
 import pandas as pd
+import flask
 
 app = flask.Flask(__name__)
 
 @app.route("/upload", methods=["PUT"])
 def upload():
-  csv_string = io.StringIO(flask.request.files["csvfile"].read().decode("utf-8"))
+  csv_file = flask.request.files["csvfile"]
+  csv_filename = csv_file.filename
 
-  # Read the CSV string into a Pandas DataFrame
-  df = pd.read_csv(csv_string)
+  # Save the CSV file to the server
+  csv_file.save(csv_filename)
+
+  # Read the CSV file into a Pandas DataFrame
+  df = pd.read_csv(csv_filename)
 
   # Manipulate the DataFrame with Python
 
-  # Display the DataFrame in the HTML output
+  # Print the DataFrame to the home page
   output = df.to_html()
 
   return flask.render_template("index.html", output=output)
