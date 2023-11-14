@@ -4,13 +4,9 @@ from io import StringIO
 import warnings  
 warnings.filterwarnings("ignore")
 import matplotlib.pyplot as plt
-%matplotlib inline
 import seaborn as sns
-sns.set(color_codes=True)
 import pandas as pd
 import numpy as np
-import plotly.express as px
-import plotly.figure_factory as ff
 
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
