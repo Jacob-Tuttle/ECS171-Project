@@ -1,8 +1,9 @@
 # ECS171-Project
 Machine learning project for ECS-171
 ## TODO
-- Create multinomial logistic regression model
-- Evaluate model via confusion matrix
+- Front-end
+- Create multinomial logistic regression model (done)
+- Evaluate model via confusion matrix (done)
 
 ## Roadmap
 - Describing the problem scientifically  
