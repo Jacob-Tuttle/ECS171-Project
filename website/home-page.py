@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 from io import StringIO
 
+import numpy as np
+import seaborn as sns
 #import matplotlib.pyplot as plt
 
 st.header('ECS-171 Project - Classify Credit Score', divider='blue')
