@@ -16,12 +16,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn import preprocessing
 from sklearn.impute import SimpleImputer
 
-from IPython.display import display
-
-from sklearn.svm import OneClassSVM
-from numpy import where
-from pathlib import Path
-
 st.header('ECS-171 Project - Classify Credit Score', divider='blue')
 
 uploaded_file = st.file_uploader("Upload CSV File")
