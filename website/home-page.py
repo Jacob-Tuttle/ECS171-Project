@@ -1,20 +1,8 @@
 import streamlit as st
 import pandas as pd
 from io import StringIO
-import warnings  
-warnings.filterwarnings("ignore")
-import matplotlib.pyplot as plt
-import seaborn as sns
-import pandas as pd
-import numpy as np
 
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
-from sklearn.linear_model import LogisticRegression
-from sklearn import preprocessing
-from sklearn.impute import SimpleImputer
+import matplotlib.pyplot as plt
 
 st.header('ECS-171 Project - Classify Credit Score', divider='blue')
 
