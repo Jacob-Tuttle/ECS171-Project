@@ -24,4 +24,5 @@ if uploaded_file is not None:
     # Can be used wherever a "file-like" object is accepted:https://github.com/Jacob-Tuttle/ECS171-Project/blob/Website/website/home-page.py
     dataframe = pd.read_csv(uploaded_file)
     DF = pd.DataFrame(dataframe)
+    print(DF)
     sns.pairplot(DF)
