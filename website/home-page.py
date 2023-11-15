@@ -9,7 +9,6 @@ import seaborn as sns
 st.header('ECS-171 Project - Classify Credit Score', divider='blue')
 
 uploaded_file = st.file_uploader("Upload CSV File")
-DF = pd.DataFrame()
 if uploaded_file is not None:
     # To read file as bytes:
     bytes_data = uploaded_file.getvalue()
@@ -25,5 +24,4 @@ if uploaded_file is not None:
     # Can be used wherever a "file-like" object is accepted:https://github.com/Jacob-Tuttle/ECS171-Project/blob/Website/website/home-page.py
     dataframe = pd.read_csv(uploaded_file)
     DF = pd.DataFrame(dataframe)
-
-sns.pairplot(DF)
+    sns.pairplot(DF)
