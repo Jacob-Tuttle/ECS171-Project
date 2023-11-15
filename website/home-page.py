@@ -25,4 +25,4 @@ if uploaded_file is not None:
     dataframe = pd.read_csv(uploaded_file)
     DF = pd.DataFrame(dataframe)
     print(DF)
-    sns.pairplot(DF)
+    #sns.pairplot(DF)
