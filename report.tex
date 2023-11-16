@@ -25,12 +25,29 @@
 \fancyhead[R]{Credit Score Classification}
 \fancyfoot[R]{\thepage}
 \section*{Introduction and background}
-A common problem in the finance and banking industry is assessing the risk 
-involved in lending someone money. Typically, a credit score is used to determine 
-whether a person is a stable borrower or not. This can be a difficult task with 
+A common problem in the finance and banking industry is assessing the risk
+involved in lending someone money. Typically, a credit score is used to determine
+whether a person is a stable borrower or not. This can be a difficult task with
 many factors to take into account when deciding someone's credit score.
 \newpage
 \section*{Literature review}
+One of the first fields machine learning techniques were tested in was economics,
+particularly credit scoring. Researchers have utilized a variety of machine learning
+algorithms to predict credit scores and risk. Common machine learning algorithms
+used include logistic regression, support vector machines (SVM), and decision trees.
+This section contains relevant work by researchers.
+\vspace{5mm}\newline
+% https://www.sciencedirect.com/science/article/pii/S0377221721005695#sec0012
+Dumitrescu et. al. used a particular model for credit score classification with an 
+improved logistic regression model that has non-linear decision tree effects. They created 
+the penalised logistic tree regression, which predicted credit score 
+more accurately than the benchmark logistic model commonly used in industry. The
+datasets they used to test the robustness of the model --------
+Additionally, they argue that this model preserves the interpretability of 
+logistic regression, an aspect that makes logistic regression popular in industry. 
+% https://www.spglobal.com/marketintelligence/en/news-insights/blog/machine-learning-and-credit-risk-modelling
+Lei et.al. compare the performance of various models for predicting the probability 
+of default. 
 
 \newpage
 \section*{Dataset description and exploratory data analysis}
@@ -51,7 +68,41 @@ such as a FICO credit score.
 
 \newpage
 \section*{References}
-\textbf{Dataset}:\\
+\textbf{Dataset}\\
 https://www.kaggle.com/datasets/parisrohan/credit-score-classification/data
-
+\vspace{5mm}\newline
+\textbf{Literature Review}\\
+% https://www.sciencedirect.com/science/article/abs/pii/S0377221721005695
+Dumitrescu, E., Hué, S., Hurlin, C., \& Tokpavi, S. (2022). 
+Machine learning for credit scoring: Improving logistic regression 
+with non-linear decision-tree effects. European Journal of Operational 
+Research, 297(3), 1178-1192. doi:10.1016/j.ejor.2021.06.053
+\vspace{5mm}\newline
+%   talks about a modified logistic regression called "penalised 
+%   logistic tree regression" that combines elements of decision trees and
+%   logistic reg based on the adaptive lasso logistic regression model
+% https://link.springer.com/chapter/10.1007/978-3-030-66891-4_5
+% Guidolin, M., Pedio, M. (2021). Sharpening the Accuracy of Credit Scoring 
+% Models with Machine Learning Algorithms. In: Consoli, S., Reforgiato Recupero, 
+% D., Saisana, M. (eds) Data Science for Economics and Finance. Springer, Cham.
+% https://doi.org/10.1007/978-3-030-66891-4\_5
+% https://sci-hub.se/10.1057/jors.2009.129
+% https://www.spglobal.com/marketintelligence/en/news-insights/blog/machine-learning-and-credit-risk-modelling
+Yue, Lei, and Luka Vidovic. “Machine Learning and Credit Risk Modelling.”
+ \textit{Machine Learning and Credit Risk Modelling $\vert$ S\&P Global Market Intelligence}, 
+ S\&P Global Market Intelligence, 30 Nov. 2020, 
+ www.spglobal.com/marketintelligence/en/news-insights/blog/machine-learning
+ -and-credit-risk-modelling. 
 \end{document}
+
+
+% some drafts:
+% https://sci-hub.se/10.1057/jors.2009.129
+% interesting paper on showing weaknesses of evaluation statistics. not sure if its
+% all that relevant though
+% Hand and Zhou observe the performances of nine supervised learning 
+% classification models in classifying customers in retail banking and discuss how 
+% different commonly used methods such as area under curve (AUC), Gini measures, Kolmogorov–Smirnov statistic (KS), 
+% used in  evaluating performance may give misleading conclusions due to 
+% fundamental weaknesses behind these methods. For example, the KS statistic concluded that classification 
+% trees performed the best while AUC ranks the model near the bottom.\\
