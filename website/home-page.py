@@ -43,7 +43,7 @@ if uploaded_file is not None:
     data['Credit_Score'] = data['Credit_Score'].replace(creditScoreMap)
     
     
-    cleanedData = train.copy().drop(columns=drop)
+    cleanedData = data.copy().drop(columns=drop)
     # Drop entries with NaN values
     cleanedData.dropna(inplace=True)
     # Separate features (X) and target variable (y)
