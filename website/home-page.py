@@ -34,5 +34,5 @@ if uploaded_file is not None:
     # Columns to clean
     clean = ['Delay_from_due_date', 'Monthly_Inhand_Salary', 'Monthly_Balance', 'Changed_Credit_Limit','Outstanding_Debt', 'Credit_Utilization_Ratio', 'Credit_History_Age']
 
-    print(data.coloumns)
+    print(data.columns)
 
