@@ -34,5 +34,32 @@ if uploaded_file is not None:
     # Columns to clean
     clean = ['Delay_from_due_date', 'Monthly_Inhand_Salary', 'Monthly_Balance', 'Changed_Credit_Limit','Outstanding_Debt', 'Credit_Utilization_Ratio', 'Credit_History_Age']
 
-    st.write(data.columns)
+        # Clean columns
+    for item in clean:
+        data[item] = pd.to_numeric(data[item], errors='coerce')
+    
+    # Map credit scores to number
+    creditScoreMap = {'Poor': 1, 'Standard': 2, 'Good': 3}
+    data['Credit_Score'] = data['Credit_Score'].replace(creditScoreMap)
+    
+    
+    cleanedData = train.copy().drop(columns=drop)
+    # Drop entries with NaN values
+    cleanedData.dropna(inplace=True)
+    # Separate features (X) and target variable (y)
+    X = cleanedData.drop(columns=['Credit_Score'])
+    y = cleanedData['Credit_Score']
+    
+    # Split the data into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    st.write("X_train")
+    st.write(X_train)
+    st.write("y_test")
+    st.write(y_train)
+    st.write("X_test")
+    st.write(X_test)
+    st.write("y_test")
+    st.write(y_test)
+    
 
