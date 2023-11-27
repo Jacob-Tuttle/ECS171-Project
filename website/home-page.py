@@ -1,10 +1,13 @@
 import streamlit as st
 import pandas as pd
 from io import StringIO
-
 import numpy as np
+
 import seaborn as sns
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
+from sklearn.linear_model import LogisticRegression
 
 st.header('ECS-171 Project - Classify Credit Score', divider='blue')
 
