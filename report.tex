@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
+\usepackage{wrapfig}
 \usepackage[margin=1.5in]{geometry}
 % Introduction and background (1 page)
 % Literature review (1/2 page)
@@ -52,15 +53,21 @@ of default.
 \newpage
 \section*{Dataset description and exploratory data analysis}
 The dataset contains 27 features. The features we will be focusing on in order
-to classify a person's credit score into either good, standard, or poor credit
-will be these features: Credit Mix, Number of days past payment due date, Number
-of delayed payments, Outstanding debt, Credit utilization, Credit history age.
-We make this decision based on how traditional credit scores are determined,
-such as a FICO credit score.
+to classify a person's credit score, which is categorical, into either ``good", ``standard", or ``poor" credit
+will be features that had the most correlation with credit score according to the heat map
+generated from this data and features used in real-life credit score assessing (Figure 1).\\
+\begin{figure}[h]
+    \includegraphics[width=\textwidth]{credscoreheatmap.png}
+    \caption{Heat map correlation}
+    \label{fig:figure1}
+\end{figure}
 \newpage
 \section*{Proposed methodology}
+From the literature review and the fact that this problem involves multiclassification,
+we decided to make and compare one SVM model and one multinomial logistic regression
+model. Additionally, we used Streamlit to host our model online. 
+for user interaction.
 
-\newpage
 \section*{Experimental results}
 
 \newpage
