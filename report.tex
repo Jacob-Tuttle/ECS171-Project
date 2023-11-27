@@ -30,7 +30,7 @@ A common problem in the finance and banking industry is assessing the risk
 involved in lending someone money. Typically, a credit score is used to determine
 whether a person is a stable borrower or not. This can be a difficult task with
 many factors to take into account when deciding someone's credit score.
-\newpage
+% \newpage
 \section*{Literature review}
 One of the first fields machine learning techniques were tested in was economics,
 particularly credit scoring. Researchers have utilized a variety of machine learning
@@ -55,18 +55,18 @@ of default.
 The dataset contains 27 features. The features we will be focusing on in order
 to classify a person's credit score, which is categorical, into either ``good", ``standard", or ``poor" credit
 will be features that had the most correlation with credit score according to the heat map
-generated from this data and features used in real-life credit score assessing (Figure 1).\\
+generated from this data and features used in real-life credit score assessing. Although the Credit\_Utilization\_Ratio has little 
+correlation to credit score, this feature is used to assess credit in real life, so we kept it. (Figure 1).\\
 \begin{figure}[h]
     \includegraphics[width=\textwidth]{credscoreheatmap.png}
-    \caption{Heat map correlation}
+    \caption{Heat map correlation.}
     \label{fig:figure1}
 \end{figure}
 \newpage
 \section*{Proposed methodology}
 From the literature review and the fact that this problem involves multiclassification,
 we decided to make and compare one SVM model and one multinomial logistic regression
-model. Additionally, we used Streamlit to host our model online. 
-for user interaction.
+model. Additionally, we used Streamlit to host our model online.
 
 \section*{Experimental results}
 
