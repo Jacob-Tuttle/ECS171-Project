@@ -49,7 +49,7 @@ def linearReport(df):
     Z_svm_test = scaler.transform(X_test)
 
     svc_li.fit(Z_svm_train, np.asarray(y_train))
-    predictions = svc.li.predict(Z_svm_test)
+    predictions = svc_li.predict(Z_svm_test)
     
     # Calculate Mean Squared Error (MSE)
     mse = mean_squared_error(y_test, predictions)
