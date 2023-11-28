@@ -3,11 +3,19 @@ import warnings
 warnings.filterwarnings("ignore")
 import seaborn as sns
 import streamlit as st
+import matplotlib.pyplot as plt
 sns.set(color_codes=True)
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix, mean_squared_error
 from sklearn.linear_model import LogisticRegression
 
+def plot_predictions_vs_actual(y_test, predictions):
+    plt.figure(figsize=(10, 6))
+    sns.scatterplot(x=y_test, y=predictions)
+    plt.xlabel("Actual Values")
+    plt.ylabel("Predicted Values")
+    plt.title("Predictions vs Actual Values")
+    st.pyplot()
 
 def report(data):
     X = data.drop(columns=['Credit_Score'])
@@ -30,5 +38,6 @@ def report(data):
 
     # Print MSE using Streamlit
     st.write("MSE: ", mse)
-
+    
+    plot_predictions_vs_actual(y_test, predictions)
     return classification_report(y_test, predictions)
