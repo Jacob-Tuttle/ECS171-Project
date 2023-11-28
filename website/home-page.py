@@ -35,22 +35,29 @@ if uploaded_file is not None:
 
     # Map credit scores to number
     creditScoreMap = {'Poor': 1, 'Standard': 2, 'Good': 3}
-    data['Credit_Score'] = data['Credit_Score'].replace(creditScoreMap)
+    cleanedData['Credit_Score'] = cleanedData['Credit_Score'].replace(creditScoreMap)
 
     # Separate features (X) and target variable (y)
     X = cleanedData.drop(columns=['Credit_Score'])
     y = cleanedData['Credit_Score']
     
     # Split the data into training and testing sets
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-    st.write("Logistic")
-    report = logistic.report(cleanedData)
-    st.text("Logistic Classification Report:\n{}".format(report))
-    st.write("Linear SVM")
-    report = svm.linearReport(cleanedData)
-    st.text("SVM Classification Report:\n{}".format(report))
-    st.write("Non-Linear SVM")
-    report = svm.nonLinearReport(cleanedData)
-    st.text("Non-Linear SVM Classification Report:\n{}".format(report))
+    #X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+    selected_models = st.sidebar.multiselect("Select Models", ["Logistic Regression", "SVM Linear Regression", "SVM Non-Linear Regression"])
+    
+    # Button to trigger the classification report
+    if st.sidebar.button("Run"):
+        if not selected_models:
+            st.warning("Please select at least one model.")
+        else:
+            for model_name in selected_models:
+                if model_name == "Logistic Regression":
+                    report = logistic.report(cleanedData)
+                elif model_name == "SVM Linear Regression":
+                    report = svm.linearReport(cleanedData)
+                elif model_name == "SVM Non-Linear Regression":\
+                    report = svm.nonLinearReport(cleanedData)
+                    
+                st.text(f"Classification Report for {model}:\n{report}")
 
