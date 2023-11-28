@@ -56,8 +56,8 @@ if uploaded_file is not None:
                     report = logistic.report(cleanedData)
                 elif model_name == "SVM Linear Regression":
                     report = svm.linearReport(cleanedData)
-                elif model_name == "SVM Non-Linear Regression":\
+                elif model_name == "SVM Non-Linear Regression":
                     report = svm.nonLinearReport(cleanedData)
                     
-                st.text(f"Classification Report for {model}:\n{report}")
+                st.text(f"Classification Report for {model_name}:\n{report}")
 
