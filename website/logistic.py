@@ -2,6 +2,7 @@
 import warnings
 warnings.filterwarnings("ignore")
 import seaborn as sns
+import streamlit
 sns.set(color_codes=True)
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
@@ -28,4 +29,9 @@ def report(data):
     # print("Accuracy:", accuracy_score(y_test, predictions))
     # print("Confusion Matrix:\n", confusion_matrix(y_test, predictions))
     # print("Classification Report:\n", classification_report(y_test, predictions))
+    total = 0
+    for pred in predictions:
+        total += (y_test - pred)**2
+
+    st.write("MSE: ", total/len(predictions)
     return classification_report(y_test, predictions)
