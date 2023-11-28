@@ -5,7 +5,7 @@ import seaborn as sns
 import streamlit as st
 sns.set(color_codes=True)
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
+from sklearn.metrics import classification_report, accuracy_score, confusion_matrix, mean_sqaured_error
 from sklearn.linear_model import LogisticRegression
 
 
