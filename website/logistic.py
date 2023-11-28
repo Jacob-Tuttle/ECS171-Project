@@ -33,5 +33,5 @@ def report(data):
     for pred in predictions:
         total += (y_test - pred)**2
 
-    st.write("MSE: ", total/len(predictions)
+    st.write("MSE: ", total/len(predictions))
     return classification_report(y_test, predictions)
