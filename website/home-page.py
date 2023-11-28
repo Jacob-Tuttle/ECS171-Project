@@ -44,20 +44,13 @@ if uploaded_file is not None:
     # Split the data into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    st.write("X_train")
-    st.write(X_train)
-    st.write("y_test")
-    st.write(y_train)
-    st.write("X_test")
-    st.write(X_test)
-    st.write("y_test")
-    st.write(y_test)
-
     st.write("Logistic")
     report = logistic.report(cleanedData)
     st.text("Logistic Classification Report:\n{}".format(report))
-    #st.write("Linear SVM")
-    #st.write(svm.linearReport(cleanedData))
-    #st.write("Non-Linear SVM")
-    #st.write(svm.nonLinearReport(cleanedData))
+    st.write("Linear SVM")
+    report = svm.linearReport(cleanedData)
+    st.text("SVM Classification Report:\n{}".format(report))
+    st.write("Non-Linear SVM")
+    report = svm.nonLinearReport(cleanedData)
+    st.text("Non-Linear SVM Classification Report:\n{}".format(report))
 
