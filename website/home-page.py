@@ -75,7 +75,8 @@ if uploaded_file is not None:
     st.write(y_test)
 
     st.write("Logistic")
-    st.write(report(cleanedData))
+    report = report(cleanedData)
+    st.text("Classification Report:\n{}".format(report))
     #st.write("Linear SVM")
     #st.write(svm.linearReport(cleanedData))
     #st.write("Non-Linear SVM")
