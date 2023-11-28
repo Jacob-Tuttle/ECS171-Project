@@ -29,9 +29,7 @@ def report(data):
     # print("Accuracy:", accuracy_score(y_test, predictions))
     # print("Confusion Matrix:\n", confusion_matrix(y_test, predictions))
     # print("Classification Report:\n", classification_report(y_test, predictions))
-    total = 0
-    for pred in predictions:
-        total += (y_test - pred)**2
-
-    print("MSE: ", total/len(predictions))
+    
+    MSE = mean_squared_error(y_test, predictions)
+    st.write("MSE: ", MSE)
     return classification_report(y_test, predictions)
