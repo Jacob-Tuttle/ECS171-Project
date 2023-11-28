@@ -49,14 +49,15 @@ def linearReport(df):
     Z_svm_test = scaler.transform(X_test)
 
     svc_li.fit(Z_svm_train, np.asarray(y_train))
-
+    predictions = svc.li.predict(Z_svm_test)
+    
     # Calculate Mean Squared Error (MSE)
     mse = mean_squared_error(y_test, predictions)
 
     # Print MSE using Streamlit
     st.write("MSE: ", mse)
     
-    return classification_report(y_test, svc_li.predict(Z_svm_test))
+    return classification_report(y_test, predictions)
 
 def nonLinearReport(df):
     X, y = df.drop(columns=['Credit_Score']), df['Credit_Score']
