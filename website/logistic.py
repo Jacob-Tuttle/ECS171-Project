@@ -11,21 +11,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix, mean_squared_error
 from sklearn.linear_model import LogisticRegression
 
-def plot_predictions_vs_actual(X_test, predictions, x, y):
-    
-    combined = np.column_stack((X_test, predictions))
-    combined = combined[combined[:, 0].argsort()]
-
-    X_test_sorted = combined[:, 0]
-    predicted_sorted = combined[:, 1]
- 
-    plt.plot(X_test_sorted,predicted_sorted, color ='m')
-    plt.scatter(x,y, s=10)
-    plt.xlabel("Actual Values")
-    plt.ylabel("Predicted Values")
-    plt.title("Predictions vs Actual Values")
-    st.pyplot()
-
 def report(data):
     X = data.drop(columns=['Credit_Score'])
     y = data['Credit_Score']
@@ -48,5 +33,4 @@ def report(data):
     # Print MSE using Streamlit
     st.write("MSE: ", mse)
     
-    plot_predictions_vs_actual(X_test, predictions, X, y)
     return classification_report(y_test, predictions)
