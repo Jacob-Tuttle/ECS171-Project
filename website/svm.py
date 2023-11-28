@@ -50,6 +50,12 @@ def linearReport(df):
 
     svc_li.fit(Z_svm_train, np.asarray(y_train))
 
+    # Calculate Mean Squared Error (MSE)
+    mse = mean_squared_error(y_test, predictions)
+
+    # Print MSE using Streamlit
+    st.write("MSE: ", mse)
+    
     return classification_report(y_test, svc_li.predict(Z_svm_test))
 
 def nonLinearReport(df):
@@ -69,4 +75,10 @@ def nonLinearReport(df):
 
     svc_rbf.fit(Z_svm_train, np.asarray(y_train))
 
+    # Calculate Mean Squared Error (MSE)
+    mse = mean_squared_error(y_test, predictions)
+
+    # Print MSE using Streamlit
+    st.write("MSE: ", mse)
+    
     return classification_report(y_test, svc_rbf.predict(Z_svm_test))
