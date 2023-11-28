@@ -54,9 +54,9 @@ if uploaded_file is not None:
     st.write(y_test)
 
     st.write("Logistic")
-    st.write(logistic.report(cleanedData))
-    st.write("Linear SVM")
-    st.write(svm.linearReport(cleanedData))
-    st.write("Non-Linear SVM")
-    st.write(svm.nonLinearReport(cleanedData))
+    st.write(report(cleanedData))
+    #st.write("Linear SVM")
+    #st.write(svm.linearReport(cleanedData))
+    #st.write("Non-Linear SVM")
+    #st.write(svm.nonLinearReport(cleanedData))
 
