@@ -48,5 +48,5 @@ def report(data):
     # Print MSE using Streamlit
     st.write("MSE: ", mse)
     
-    plot_predictions_vs_actual(x_test, predictions, X, y)
+    plot_predictions_vs_actual(X_test, predictions, X, y)
     return classification_report(y_test, predictions)
