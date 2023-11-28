@@ -43,10 +43,10 @@ def report(data):
     predictions = logreg.predict(X_test)
 
     # Calculate Mean Squared Error (MSE)
-    mse = mean_squared_error(X_test, predictions, X,y)
+    mse = mean_squared_error(y_test, predictions)
 
     # Print MSE using Streamlit
     st.write("MSE: ", mse)
     
-    plot_predictions_vs_actual(y_test, predictions)
+    plot_predictions_vs_actual(x_test, predictions, X, y)
     return classification_report(y_test, predictions)
