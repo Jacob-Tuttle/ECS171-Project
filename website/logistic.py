@@ -4,15 +4,23 @@ warnings.filterwarnings("ignore")
 import seaborn as sns
 import streamlit as st
 import matplotlib.pyplot as plt
+import numpy as np
 st.set_option('deprecation.showPyplotGlobalUse', False)
 sns.set(color_codes=True)
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix, mean_squared_error
 from sklearn.linear_model import LogisticRegression
 
-def plot_predictions_vs_actual(y_test, predictions):
-    plt.figure(figsize=(10, 6))
-    sns.scatterplot(x=y_test, y=predictions)
+def plot_predictions_vs_actual(X_test, predictions, x, y):
+    
+    combined = np.column_stack((X_test, predictions))
+    combined = combined[combined[:, 0].argsort()]
+
+    X_test_sorted = combined[:, 0]
+    predicted_sorted = combined[:, 1]
+ 
+    plt.plot(X_test_sorted,predicted_sorted, color ='m')
+    plt.scatter(x,y, s=10)
     plt.xlabel("Actual Values")
     plt.ylabel("Predicted Values")
     plt.title("Predictions vs Actual Values")
@@ -35,7 +43,7 @@ def report(data):
     predictions = logreg.predict(X_test)
 
     # Calculate Mean Squared Error (MSE)
-    mse = mean_squared_error(y_test, predictions)
+    mse = mean_squared_error(X_test, predictions, X,y)
 
     # Print MSE using Streamlit
     st.write("MSE: ", mse)
