@@ -4,6 +4,7 @@ warnings.filterwarnings("ignore")
 import seaborn as sns
 import streamlit as st
 import matplotlib.pyplot as plt
+st.set_option('deprecation.showPyplotGlobalUse', False)
 sns.set(color_codes=True)
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix, mean_squared_error
