@@ -76,11 +76,11 @@ def nonLinearReport(df):
     Z_svm_test = scaler.transform(X_test)
 
     svc_rbf.fit(Z_svm_train, np.asarray(y_train))
-
+    predictions = svc_rbf.predict(Z_svm_test)
     # Calculate Mean Squared Error (MSE)
     mse = mean_squared_error(y_test, predictions)
 
     # Print MSE using Streamlit
     st.write("MSE: ", mse)
     
-    return classification_report(y_test, svc_rbf.predict(Z_svm_test))
+    return classification_report(y_test, predictions)
