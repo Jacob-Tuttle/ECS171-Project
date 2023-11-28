@@ -25,11 +25,10 @@ def report(data):
     # Make predictions on the test data
     predictions = logreg.predict(X_test)
 
-    # Evaluate the model
-    # print("Accuracy:", accuracy_score(y_test, predictions))
-    # print("Confusion Matrix:\n", confusion_matrix(y_test, predictions))
-    # print("Classification Report:\n", classification_report(y_test, predictions))
-    
-    MSE = mean_squared_error(y_test, predictions)
-    st.write("MSE: ", MSE)
+    # Calculate Mean Squared Error (MSE)
+    mse = mean_squared_error(y_test, predictions)
+
+    # Print MSE using Streamlit
+    st.write("MSE: ", mse)
+
     return classification_report(y_test, predictions)
