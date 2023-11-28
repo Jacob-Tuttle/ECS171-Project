@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 import warnings
 warnings.filterwarnings("ignore")
 import seaborn as sns
+import streamlit as st
 sns.set(color_codes=True)
 import numpy as np
 from sklearn.metrics import classification_report, mean_squared_error
