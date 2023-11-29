@@ -45,30 +45,36 @@ These credit score estimates are predicted in a way that is simple for the clien
 This demand for straightforward and transparent credit scoring by governments and clients alike has interestingly compelled banks to
 consider less intricate or “black box” machine learning models, creating a delicate balance between accuracy and simplicity.
 \vspace{5mm}\newline
-Credit scoring is considered to be one of first and most common instances of machine learning used in the field of economics.
-The financial sector is historically always one of the first sectors to adopt technological advancements, and with so much data now
-digitized by banks and numerous complex variables that drive one's credit score, it has become a token example for machine learning
-and how to not only predict creditworthiness but constantly tune the equations and hyperparameters used to determine it alongside a
-fluctuating, real-world economy.
+credit scoring has always been a common, concrete example of machine learning, as -- in the world of economics -- even the tiniest increase
+in accuracy can save billions of dollars in the long-run.
+As a result, researchers have utilized a variety of machine learning algorithms to better predict credit scores and risk.
+Nearly all client data is now digitized by banks, and with numerous complex variables that drive one's score, credit score prediction
+through machine learning is an ideal way to not only predict creditworthiness but constantly tune the equations and hyperparameters used
+to determine it in the midst of a fluctuating, real-world economy.
 
 % \newpage
 \section*{Literature review}
-One of the first fields machine learning techniques were tested in was economics,
-particularly credit scoring. Researchers have utilized a variety of machine learning
-algorithms to predict credit scores and risk. Common machine learning algorithms
-used include logistic regression, support vector machines (SVM), and decision trees.
-This section contains relevant work by researchers.
+Economists and researchers alike have utilized a variety of machine learning algorithms to predict credit scores and investment risk.
+Some common examples include decision trees, logistic regression, and Support Vector Machines (SVM).
+\vspace{5mm}\newline
+% https://www.sciencedirect.com/science/article/pii/S1568494620302039
+With the history of credit scoring tracing its roots back to the 1950s, bank decisions were initially guided by the
+5 C's approach -- Character, Capital, Collateral, Capacity, and Condition -- relying on subjective, physically-recorded information it its
+assessments.
+While we could now consider this approach a decision-tree model, Dastile et al. describe how the financial industry's regulatory need for
+transparency in lending decisions has led to the prevalence of logistic regression models, known for their simplicity and interpretability.
+While sophisticated, higher-accuracy machine learning models have arisen over time, their opacity continues to raise concerns.
+In response, Dastile et al. go on to note several key machine learning techniques between 2010 and 2018 that have created a guided
+framework of credit scoring, combining both accuracy and transparency in lending decisions.
 \vspace{5mm}\newline
 % https://www.sciencedirect.com/science/article/pii/S0377221721005695#sec0012
-Dumitrescu et. al. used a particular model for credit score classification with an 
-improved logistic regression model that has non-linear decision tree effects. They created 
-the penalised logistic tree regression, which predicted credit score 
-more accurately than the benchmark logistic model commonly used in industry.
-Additionally, they argue that this model preserves the interpretability of 
-logistic regression, an aspect that makes logistic regression popular in industry. 
-% https://www.spglobal.com/marketintelligence/en/news-insights/blog/machine-learning-and-credit-risk-modelling
-Vidovic et.al. compare the performance of various models for predicting the probability 
-of default. 
+One modern approach to credit scoring comes from Dumitrescu et. al., who use a particular model called Penalised Logistic Tree Regression
+(PLTR) for credit score classification with an improved logistic regression model that has non-linear decision tree effects.
+It is able to predict credit score more accurately than the benchmark logistic regression commonly used in the industry, and on a level
+that is comparable to more accurate random forest models.
+This is because it is able to capture recursive, multi-variable traits in the data unnoticed by a typical logistic regression.
+Dumitrescu et. al. use multiple datasets to test the robustness of the model and argue that PLTR preserves the needed transparency and
+interpretability that come with logistic regression.
 
 \newpage
 \section*{Dataset description and exploratory data analysis}
@@ -200,12 +206,16 @@ Below are the classification reports for each of the models:\\
 https://www.kaggle.com/datasets/parisrohan/credit-score-classification/data
 \vspace{5mm}\newline
 \textbf{Literature Review}\\
+% https://www.sciencedirect.com/science/article/pii/S1568494620302039
+Dastile, X., Celik, T., \& Potsane, M. (2020).
+Statistical and machine learning models in credit scoring: A systematic literature survey.
+Applied Soft Computing, 91. doi:10.1016/j.asoc.2020.106263.
+\vspace{5mm}\newline
 % https://www.sciencedirect.com/science/article/abs/pii/S0377221721005695
 Dumitrescu, E., Hué, S., Hurlin, C., \& Tokpavi, S. (2022). 
 Machine learning for credit scoring: Improving logistic regression 
 with non-linear decision-tree effects. European Journal of Operational 
 Research, 297(3), 1178-1192. doi:10.1016/j.ejor.2021.06.053
-\vspace{5mm}\newline
 %   talks about a modified logistic regression called "penalised 
 %   logistic tree regression" that combines elements of decision trees and
 %   logistic reg based on the adaptive lasso logistic regression model
@@ -216,11 +226,11 @@ Research, 297(3), 1178-1192. doi:10.1016/j.ejor.2021.06.053
 % https://doi.org/10.1007/978-3-030-66891-4\_5
 % https://sci-hub.se/10.1057/jors.2009.129
 % https://www.spglobal.com/marketintelligence/en/news-insights/blog/machine-learning-and-credit-risk-modelling
-Yue, Lei, and Luka Vidovic. “Machine Learning and Credit Risk Modelling.”
- \textit{Machine Learning and Credit Risk Modelling $\vert$ S\&P Global Market Intelligence}, 
- S\&P Global Market Intelligence, 30 Nov. 2020, 
- www.spglobal.com/marketintelligence/en/news-insights/blog/machine-learning
- -and-credit-risk-modelling. 
+% Yue, Lei, and Luka Vidovic. “Machine Learning and Credit Risk Modelling.”
+%  \textit{Machine Learning and Credit Risk Modelling $\vert$ S\&P Global Market Intelligence}, 
+%  S\&P Global Market Intelligence, 30 Nov. 2020, 
+%  www.spglobal.com/marketintelligence/en/news-insights/blog/machine-learning
+%  -and-credit-risk-modelling. 
 \end{document}
 
 
