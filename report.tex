@@ -95,10 +95,42 @@ the standard 80:20 training to testing split in order to benchmark the performan
 data. Additionally, we used Streamlit to host our model online.
 
 \section*{Experimental results}
-Below are the classification reports for each of the models:\\
+The Python library scikit-learn was used to create all four models. Both SVM models
+preserve default values aside from the change in kernel type. The two multinomial logistic
+regression models also preserve default values aside from setting the maximum iterations
+to two thousand, specifying the multi class parameter to “multinomial” and using the
+limited-memory BFGS solver. For all models, the “Standard” credit score was most 
+likely to be categorized correctly, followed by“Poor” and “Good”. However, all models
+have relatively low accuracy overall, rangingfrom 0.59 to 0.62. The SVM with a RBF
+kernel performed the best with an accuracy of 0.62 (Table 1).
+\vspace{5mm}\newline
+In an attempt to improve the accuracy of the logistic regression model, which was performing the poorest, 
+we removed outliers within the dataset. This had very little impact on the overall accuracy, 
+but the f1-score for the “Good” credit score improved the most, going from 0.25 to 0.36 (Table 4). Interestingly,
+the SVM model with a linear kernel was unable to classify a “Good” score at all, with zeroes for precision, 
+recall, and f1-score (Table 2). All models had a tendency to misclassify the “Standard” category the most as either
+“Poor” or “Good” at similar frequency.
+
+\section*{Conclusion and discussion}
+Of the three different models we trained, SVM model using the RBF Kernel yielded the highest
+accuracy of 0.62. In our logistic model, removing the outliers caused a decrease in precison
+and recall when predicting poor credit scores, but an increase when predicting standard and good
+scores. Coincidentally, both logistic models ended up with an identical overall accuracy.
+\vspace{5mm}\newline
+The SVM model using the RBF kernel, had a noticibly higher precision when predicting poor credit
+scores, meaning that a detected poor credit score is likely to be correct. This model also had a
+very high recall for standard credit scores, meaning that it was able to correctly identify almost all
+instances with a standard score.
+\vspace{5mm}\newline
+In all of our models, it was very difficult to correctly identify a high credit score. This could have
+been caused by a much lower sample size when compared to entries of a poor or standard score. In particular,
+the SVM using the linear kernel was unable to report precision, recall, and f1-score for high credit scores,
+meaning that there was an insufficient amount of data correctly predict it. To fix some of these issues,
+we could modify the training data to contain an equal number of good, standard, and poor credit score samples. 
+\clearpage
 \begin{table}[!ht]
     \centering
-    \resizebox{1.1\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
+    \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
     \hline
         % RBF Kernel & ~ & ~ & ~ & ~ \\ \hline
         ~ & precision & recall & f1-score & support \\ \hline
@@ -115,7 +147,7 @@ Below are the classification reports for each of the models:\\
 \end{table}
 \begin{table}[!ht]
     \centering
-    \resizebox{1.1\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
+    \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
     \hline
         % Linear Kernel & ~ & ~ & ~ & ~ \\ \hline
         ~ & precision & recall & f1-score & support \\ \hline
@@ -132,7 +164,7 @@ Below are the classification reports for each of the models:\\
 \end{table}
 \begin{table}[!ht]
     \centering
-    \resizebox{1.1\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
+    \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
     \hline
         % Logistic w/ outliers & ~ & ~ & ~ & ~ \\ \hline
         ~ & precision & recall & f1-score & support \\ \hline
@@ -149,7 +181,7 @@ Below are the classification reports for each of the models:\\
 \end{table}
 \begin{table}[!ht]
     \centering
-    \resizebox{1.1\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
+    \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
     \hline
         % Logistic w/o outliers & ~ & ~ & ~ & ~ \\ \hline
         ~ & precision & recall & f1-score & support \\ \hline
@@ -199,22 +231,7 @@ Below are the classification reports for each of the models:\\
 % \caption{Confusion matrices for the models}
 
 \clearpage
-\section*{Conclusion and discussion}
-Of the three different models we trained, SVM model using the RBF Kernel yielded the highest
-accuracy of 0.62. In our logistic model, removing the outliers caused a decrease in precison
-and recall when predicting poor credit scores, but an increase when predicting standard and good
-scores. Coincidentally, both logistic models ended up with an identical overall accuracy.
-\vspace{5mm}\newline
-The SVM model using the RBF kernel, had a noticibly higher precision when predicting poor credit
-scores, meaning that a detected poor credit score is likely to be correct. This model also had a
-very high recall for standard credit scores, meaning that it was able to correctly identify almost all
-instances with a standard score.
-\vspace{5mm}\newline
-In all of our models, it was very difficult to correctly identify a high credit score. This could have
-been caused by a much lower sample size when compared to entries of a poor or standard score. In particular,
-the SVM using the linear kernel was unable to report precision, recall, and f1-score for high credit scores,
-meaning that there was an insufficient amount of data correctly predict it. To fix some of these issues,
-we could modify the training data to contain an equal number of good, standard, and poor credit score samples. 
+
 
 \section*{References}
 \textbf{Dataset}\\
