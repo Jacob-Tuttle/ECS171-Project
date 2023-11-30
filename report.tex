@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[11pt, twocolumn]{article}
 \usepackage{multicol}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
@@ -27,7 +27,6 @@
 \fancyhf{} % clear header and footer
 \fancyhead[R]{Credit Score Classification}
 \fancyfoot[R]{\thepage}
-\begin{multicols}{2}
 \section*{Introduction \& background}
 A common problem in the finance and banking industry is assessing the risk involved with lending money to clients.
 To better assess a borrower's creditworthiness, lenders formulate and assign “credit scores” to their clients, based on preconceived data 
@@ -84,9 +83,11 @@ will be features that had the most correlation with credit score according to th
 generated from this data and features used in real-life credit score assessing. Although the Credit\_Utilization\_Ratio has little 
 correlation to credit score, this feature is used to assess credit in real life, so we kept it. (Figure 1).\\
 \begin{figure}[h]
-    \includegraphics[width=\columnwidth]{credscoreheatmap.png}
+    \begin{center}
+    \includegraphics[width=0.56\columnwidth]{credscoreheatmap.png}
     \caption{Heat map correlation.}
     \label{fig:figure1}
+    \end{center}
 \end{figure}
 \section*{Proposed methodology}
 From the literature review and the fact that this problem involves multiclassification,
@@ -107,9 +108,9 @@ In an attempt to improve the accuracy of the logistic regression model, which wa
 This had very little impact on the overall accuracy, but the f1-score for the ``Good'' credit score improved the most, going from 0.25 to 0.36 (Figure 5).
 Interestingly, the SVM model with a linear kernel was unable to classify a ``Good'' score at all, with zeroes for precision, 
 recall, and f1-score (Figure 3). All models had a tendency to misclassify the ``Standard'' category the most as either ``Poor'' or 
-``Good'' at similar frequency. 
-\end{multicols}
-\begin{figure}[h]
+``Good'' at similar frequency.
+
+\begin{figure*}[h]
     % Below are the classification reports for each of the models:
     \begin{subtable}{0.5\textwidth}
         \centering
@@ -134,8 +135,8 @@ recall, and f1-score (Figure 3). All models had a tendency to misclassify the ``
         \caption{SVM, RBF kernel}
     \end{subfigure}
     \caption{}
-\end{figure}
-\begin{figure}[h]
+\end{figure*}
+\begin{figure*}[h]
     \begin{subtable}{0.5\textwidth}
         \centering
         \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
@@ -159,8 +160,8 @@ recall, and f1-score (Figure 3). All models had a tendency to misclassify the ``
         \caption{SVM, linear kernel}
     \end{subfigure}
     \caption{}
-\end{figure}
-\begin{figure}[h]
+\end{figure*}
+\begin{figure*}[h]
     \begin{subtable}{0.5\textwidth}
         \centering
         \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
@@ -184,8 +185,8 @@ recall, and f1-score (Figure 3). All models had a tendency to misclassify the ``
         \caption{Logistic with outliers}
     \end{subfigure}
     \caption{}
-\end{figure}
-\begin{figure}[h]
+\end{figure*}
+\begin{figure*}[h]
     \begin{subtable}{0.5\textwidth}
         \centering
         \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
@@ -209,9 +210,9 @@ recall, and f1-score (Figure 3). All models had a tendency to misclassify the ``
         \caption{Logistic with no outliers}
     \end{subfigure}
     \caption{}
-\end{figure}
+\end{figure*}
 \clearpage
-\begin{multicols}{2}
+\twocolumn
 \section*{Conclusion and discussion}
 Of the three different models we trained, SVM model using the RBF Kernel yielded the highest
 accuracy of 0.62. In our logistic model, removing the outliers caused a decrease in precison
@@ -259,7 +260,6 @@ Research, 297(3), 1178-1192. doi:10.1016/j.ejor.2021.06.053
 %  S\&P Global Market Intelligence, 30 Nov. 2020, 
 %  www.spglobal.com/marketintelligence/en/news-insights/blog/machine-learning
 %  -and-credit-risk-modelling. 
-\end{multicols}
 \end{document}
 
 
