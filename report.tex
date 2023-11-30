@@ -89,8 +89,10 @@ correlation to credit score, this feature is used to assess credit in real life,
 \section*{Proposed methodology}
 From the literature review and the fact that this problem involves multiclassification,
 we decided to make and compare two SVM models with a linear and RBF kernel and one 
-multinomial logistic regression model. Additionally, we used Streamlit to host our model online.
-
+multinomial logistic regression model. We trained the logistic regression model with and without
+outliters to determine the impact on the accuracy. For all three of our models, we used
+the standard 80:20 training to testing split in order to benchmark the performance on unseen
+data. Additionally, we used Streamlit to host our model online.
 
 \section*{Experimental results}
 Below are the classification reports for each of the models:\\
@@ -198,6 +200,21 @@ Below are the classification reports for each of the models:\\
 
 \clearpage
 \section*{Conclusion and discussion}
+Of the three different models we trained, SVM model using the RBF Kernel yielded the highest
+accuracy of 0.62. In our logistic model, removing the outliers caused a decrease in precison
+and recall when predicting poor credit scores, but an increase when predicting standard and good
+scores. Coincidentally, both logistic models ended up with an identical overall accuracy.
+\vspace{5mm}\newline
+The SVM model using the RBF kernel, had a noticibly higher precision when predicting poor credit
+scores, meaning that a detected poor credit score is likely to be correct. This model also had a
+very high recall for standard credit scores, meaning that it was able to correctly identify almost all
+instances with a standard score.
+\vspace{5mm}\newline
+In all of our models, it was very difficult to correctly identify a high credit score. This could have
+been caused by a much lower sample size when compared to entries of a poor or standard score. In particular,
+the SVM using the linear kernel was unable to report precision, recall, and f1-score for high credit scores,
+meaning that there was an insufficient amount of data correctly predict it. To fix some of these issues,
+we could modify the training data to contain an equal number of good, standard, and poor credit score samples. 
 
 \section*{References}
 \textbf{Dataset}\\
