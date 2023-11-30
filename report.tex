@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[twocolumn]{article}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{wrapfig}
@@ -26,7 +26,7 @@
 \fancyhf{} % clear header and footer
 \fancyhead[R]{Credit Score Classification}
 \fancyfoot[R]{\thepage}
-\section*{Introduction and background}
+\section*{Introduction \& background}
 A common problem in the finance and banking industry is assessing the risk involved with lending money to clients.
 To better assess a borrower's creditworthiness, lenders formulate and assign “credit scores” to their clients, based on preconceived data 
 like income, spending, and credit history.
@@ -52,10 +52,9 @@ Nearly all client data is now digitized by banks, and with numerous complex vari
 through machine learning is an ideal way to not only predict creditworthiness but constantly tune the equations and hyperparameters used
 to determine it in the midst of a fluctuating, real-world economy.
 
-% \newpage
 \section*{Literature review}
-Economists and researchers alike have utilized a variety of machine learning algorithms to predict credit scores and investment risk.
-Some common examples include decision trees, logistic regression, and Support Vector Machines (SVM).
+Economists and researchers alike have utilized a variety of machine learning algorithms to better predict credit scores and investment risk.
+Some common implementations include decision trees, logistic regression, and Support Vector Machines (SVM).
 \vspace{5mm}\newline
 % https://www.sciencedirect.com/science/article/pii/S1568494620302039
 With the history of credit scoring tracing its roots back to the 1950s, bank decisions were initially guided by the
@@ -76,7 +75,6 @@ This is because it is able to capture recursive, multi-variable traits in the da
 Dumitrescu et. al. use multiple datasets to test the robustness of the model and argue that PLTR preserves the needed transparency and
 interpretability that come with logistic regression.
 
-\newpage
 \section*{Dataset description and exploratory data analysis}
 The dataset contains 27 features. The features we will be focusing on in order
 to classify a person's credit score, which is categorical, into either ``good", ``standard", or ``poor" credit
@@ -84,11 +82,10 @@ will be features that had the most correlation with credit score according to th
 generated from this data and features used in real-life credit score assessing. Although the Credit\_Utilization\_Ratio has little 
 correlation to credit score, this feature is used to assess credit in real life, so we kept it. (Figure 1).\\
 \begin{figure}[h]
-    \includegraphics[width=\textwidth]{credscoreheatmap.png}
+    \includegraphics[width=\columnwidth]{credscoreheatmap.png}
     \caption{Heat map correlation.}
     \label{fig:figure1}
 \end{figure}
-\newpage
 \section*{Proposed methodology}
 From the literature review and the fact that this problem involves multiclassification,
 we decided to make and compare two SVM models with a linear and RBF kernel and one 
@@ -99,7 +96,7 @@ multinomial logistic regression model. Additionally, we used Streamlit to host o
 Below are the classification reports for each of the models:\\
 \begin{table}[!ht]
     \centering
-    \begin{tabular}{|l|l|l|l|l|}
+    \resizebox{1.1\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
     \hline
         % RBF Kernel & ~ & ~ & ~ & ~ \\ \hline
         ~ & precision & recall & f1-score & support \\ \hline
@@ -111,12 +108,12 @@ Below are the classification reports for each of the models:\\
         accuracy & ~ & ~ & 0.62 & 9403 \\ \hline
         macro avg & 0.62 & 0.46 & 0.44 & 9403 \\ \hline
         weighted avg & 0.62 & 0.62 & 0.56 & 9403 \\ \hline
-    \end{tabular}
+    \end{tabular}}
     \caption{Classification report for SVM with RBF kernel}
 \end{table}
 \begin{table}[!ht]
     \centering
-    \begin{tabular}{|l|l|l|l|l|}
+    \resizebox{1.1\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
     \hline
         % Linear Kernel & ~ & ~ & ~ & ~ \\ \hline
         ~ & precision & recall & f1-score & support \\ \hline
@@ -128,12 +125,12 @@ Below are the classification reports for each of the models:\\
         accuracy & ~ & ~ & 0.59 & 9403 \\ \hline
         macro avg & 0.4 & 0.43 & 0.4 & 9403 \\ \hline
         weighted avg & 0.5 & 0.59 & 0.52 & 9403 \\ \hline
-    \end{tabular}
+    \end{tabular}}
     \caption{Classification report for SVM with linear kernel}
 \end{table}
 \begin{table}[!ht]
     \centering
-    \begin{tabular}{|l|l|l|l|l|}
+    \resizebox{1.1\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
     \hline
         % Logistic w/ outliers & ~ & ~ & ~ & ~ \\ \hline
         ~ & precision & recall & f1-score & support \\ \hline
@@ -145,12 +142,12 @@ Below are the classification reports for each of the models:\\
         accuracy & ~ & ~ & 0.59 & 14971 \\ \hline
         macro avg & 0.56 & 0.47 & 0.48 & 14971 \\ \hline
         weighted avg & 0.58 & 0.59 & 0.56 & 14971 \\ \hline
-    \end{tabular}
+    \end{tabular}}
     \caption{Classification report for logistic model with outliers}
 \end{table}
 \begin{table}[!ht]
     \centering
-    \begin{tabular}{|l|l|l|l|l|}
+    \resizebox{1.1\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
     \hline
         % Logistic w/o outliers & ~ & ~ & ~ & ~ \\ \hline
         ~ & precision & recall & f1-score & support \\ \hline
@@ -162,45 +159,46 @@ Below are the classification reports for each of the models:\\
         accuracy & ~ & ~ & 0.59 & 13844 \\ \hline
         macro avg & 0.57 & 0.49 & 0.5 & 13844 \\ \hline
         weighted avg & 0.58 & 0.59 & 0.57 & 13844 \\ \hline
-    \end{tabular}
+    \end{tabular}}
     \caption{Classification report for logistic model with no outliers}
 \end{table}
-\pagebreak
-\begin{figure}[!htpb]
-\begin{subfigure}{0.49\textwidth}
-    \includegraphics[width=\textwidth]{svmli.png}
+\begin{figure}
+    % \includegraphics[width=\textwidth]{svmli.png}
+    % \caption{Confusion matrix for SVM, linear kernel.}
+    \centering
+    \includegraphics[width=0.65\columnwidth]{svmrbf.png}
+    \caption{SVM, RBF kernel}
+    % \label{fig:right}
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\columnwidth]{svmli.png}
     \caption{SVM, linear kernel}
     % \includegraphics[width=0.5\textwidth]{svmrbf.png}
     % \caption{Confusion matrix for SVM, RBF kernel.}
     % \label{fig:left}
-\end{subfigure}
-\begin{subfigure}{0.49\textwidth}
+\end{figure}
+\begin{figure}
     % \includegraphics[width=\textwidth]{svmli.png}
     % \caption{Confusion matrix for SVM, linear kernel.}
-    \includegraphics[width=\textwidth]{svmrbf.png}
-    \caption{SVM, RBF kernel}
+    \centering
+    \includegraphics[width=0.65\columnwidth]{logisticWithOutliers.png}
+    \caption{Logistic with outliers}
     % \label{fig:right}
-\end{subfigure}
-\begin{subfigure}{0.49\textwidth}
-    \includegraphics[width=\textwidth]{logisticNoOutliers.png}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.65\columnwidth]{logisticNoOutliers.png}
     \caption{Logistic with no outliers}
     % \includegraphics[width=0.5\textwidth]{svmrbf.png}
     % \caption{Confusion matrix for SVM, RBF kernel.}
     % \label{fig:left}
-\end{subfigure}
-\begin{subfigure}{0.49\textwidth}
-    % \includegraphics[width=\textwidth]{svmli.png}
-    % \caption{Confusion matrix for SVM, linear kernel.}
-    \includegraphics[width=\textwidth]{logisticWithOutliers.png}
-    \caption{Logistic with outliers}
-    % \label{fig:right}
-\end{subfigure}
-\caption{Confusion matrices for the models}
 \end{figure}
+% \caption{Confusion matrices for the models}
+
 \clearpage
 \section*{Conclusion and discussion}
 
-\newpage
 \section*{References}
 \textbf{Dataset}\\
 https://www.kaggle.com/datasets/parisrohan/credit-score-classification/data
