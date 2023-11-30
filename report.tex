@@ -1,4 +1,5 @@
-\documentclass[twocolumn]{article}
+\documentclass[11pt]{article}
+\usepackage{multicol}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{wrapfig}
@@ -26,6 +27,7 @@
 \fancyhf{} % clear header and footer
 \fancyhead[R]{Credit Score Classification}
 \fancyfoot[R]{\thepage}
+\begin{multicols}{2}
 \section*{Introduction \& background}
 A common problem in the finance and banking industry is assessing the risk involved with lending money to clients.
 To better assess a borrower's creditworthiness, lenders formulate and assign “credit scores” to their clients, based on preconceived data 
@@ -100,121 +102,116 @@ in kernel type. The two multinomial logistic regression models also preserve def
 to two thousand, specifying the multi\_class parameter to ``multinomial'' and using the limited-memory BFGS solver.
 For all models, the ``Standard'' credit score was most likely to be categorized correctly, followed by ``Poor'' and ``Good''. 
 However, all models have relatively low accuracy overall, ranging from 0.59 to 0.62. The SVM with a RBF kernel performed the best with an
-accuracy of 0.62 (Table 1).
-\vspace{5mm}\newline
+accuracy of 0.62 (Figure 2). \\
 In an attempt to improve the accuracy of the logistic regression model, which was performing the poorest, we removed outliers within the dataset.
-This had very little impact on the overall accuracy, but the f1-score for the ``Good'' credit score improved the most, going from 0.25 to 0.36 (Table 4).
+This had very little impact on the overall accuracy, but the f1-score for the ``Good'' credit score improved the most, going from 0.25 to 0.36 (Figure 5).
 Interestingly, the SVM model with a linear kernel was unable to classify a ``Good'' score at all, with zeroes for precision, 
-recall, and f1-score (Table 2). All models had a tendency to misclassify the ``Standard'' category the most as either ``Poor'' or 
+recall, and f1-score (Figure 3). All models had a tendency to misclassify the ``Standard'' category the most as either ``Poor'' or 
 ``Good'' at similar frequency. 
-
-% Below are the classification reports for each of the models:
-\begin{table}[!ht]
-    \centering
-    \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
-    \hline
-        % RBF Kernel & ~ & ~ & ~ & ~ \\ \hline
-        ~ & precision & recall & f1-score & support \\ \hline
-        ~ & ~ & ~ & ~ & ~ \\ \hline
-        1 & 0.7 & 0.48 & 0.57 & 2774 \\ \hline
-        2 & 0.6 & 0.88 & 0.72 & 5064 \\ \hline
-        3 & 0.56 & 0.02 & 0.05 & 1565 \\ \hline
-        ~ & ~ & ~ & ~ & ~ \\ \hline
-        accuracy & ~ & ~ & 0.62 & 9403 \\ \hline
-        macro avg & 0.62 & 0.46 & 0.44 & 9403 \\ \hline
-        weighted avg & 0.62 & 0.62 & 0.56 & 9403 \\ \hline
-    \end{tabular}}
-    \caption{Classification report for SVM with RBF kernel}
-\end{table}
-% \vspace*{-5mm}
-\begin{table}[!ht]
-    \centering
-    \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
-    \hline
-        % Linear Kernel & ~ & ~ & ~ & ~ \\ \hline
-        ~ & precision & recall & f1-score & support \\ \hline
-        ~ & ~ & ~ & ~ & ~ \\ \hline
-        1 & 0.62 & 0.41 & 0.5 & 2774 \\ \hline
-        2 & 0.58 & 0.87 & 0.7 & 5064 \\ \hline
-        3 & 0 & 0 & 0 & 1565 \\ \hline
-        ~ & ~ & ~ & ~ & ~ \\ \hline
-        accuracy & ~ & ~ & 0.59 & 9403 \\ \hline
-        macro avg & 0.4 & 0.43 & 0.4 & 9403 \\ \hline
-        weighted avg & 0.5 & 0.59 & 0.52 & 9403 \\ \hline
-    \end{tabular}}
-    \caption{Classification report for SVM with linear kernel}
-\end{table}
-% \vspace*{-5mm}
-\begin{table}[!ht]
-    \centering
-    \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
-    \hline
-        % Logistic w/ outliers & ~ & ~ & ~ & ~ \\ \hline
-        ~ & precision & recall & f1-score & support \\ \hline
-        ~ & ~ & ~ & ~ & ~ \\ \hline
-        1 & 0.63 & 0.42 & 0.5 & 4317 \\ \hline
-        2 & 0.59 & 0.82 & 0.69 & 8022 \\ \hline
-        3 & 0.47 & 0.17 & 0.25 & 2632 \\ \hline
-        ~ & ~ & ~ & ~ & ~ \\ \hline
-        accuracy & ~ & ~ & 0.59 & 14971 \\ \hline
-        macro avg & 0.56 & 0.47 & 0.48 & 14971 \\ \hline
-        weighted avg & 0.58 & 0.59 & 0.56 & 14971 \\ \hline
-    \end{tabular}}
-    \caption{Classification report for logistic model with outliers}
-\end{table}
-% \vspace*{-5mm}
-\begin{table}[!ht]
-    \centering
-    \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
-    \hline
-        % Logistic w/o outliers & ~ & ~ & ~ & ~ \\ \hline
-        ~ & precision & recall & f1-score & support \\ \hline
-        ~ & ~ & ~ & ~ & ~ \\ \hline
-        1 & 0.6 & 0.37 & 0.45 & 3483 \\ \hline
-        2 & 0.61 & 0.81 & 0.69 & 7642 \\ \hline
-        3 & 0.5 & 0.29 & 0.36 & 2719 \\ \hline
-        ~ & ~ & ~ & ~ & ~ \\ \hline
-        accuracy & ~ & ~ & 0.59 & 13844 \\ \hline
-        macro avg & 0.57 & 0.49 & 0.5 & 13844 \\ \hline
-        weighted avg & 0.58 & 0.59 & 0.57 & 13844 \\ \hline
-    \end{tabular}}
-    \caption{Classification report for logistic model with no outliers}
-\end{table}
-\begin{figure}
-    % \includegraphics[width=\textwidth]{svmli.png}
-    % \caption{Confusion matrix for SVM, linear kernel.}
-    \centering
-    \includegraphics[width=0.65\columnwidth]{svmrbf.png}
-    \caption{SVM, RBF kernel}
-    % \label{fig:right}
+\end{multicols}
+\begin{figure}[h]
+    % Below are the classification reports for each of the models:
+    \begin{subtable}{0.5\textwidth}
+        \centering
+        \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
+        \hline
+            % RBF Kernel & ~ & ~ & ~ & ~ \\ \hline
+            ~ & precision & recall & f1-score & support \\ \hline
+            ~ & ~ & ~ & ~ & ~ \\ \hline
+            1 & 0.7 & 0.48 & 0.57 & 2774 \\ \hline
+            2 & 0.6 & 0.88 & 0.72 & 5064 \\ \hline
+            3 & 0.56 & 0.02 & 0.05 & 1565 \\ \hline
+            ~ & ~ & ~ & ~ & ~ \\ \hline
+            accuracy & ~ & ~ & 0.62 & 9403 \\ \hline
+            macro avg & 0.62 & 0.46 & 0.44 & 9403 \\ \hline
+            weighted avg & 0.62 & 0.62 & 0.56 & 9403 \\ \hline
+        \end{tabular}}
+        \caption{Classification report for SVM with RBF kernel}
+    \end{subtable}
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.65\columnwidth]{svmrbf.png}
+        \caption{SVM, RBF kernel}
+    \end{subfigure}
+    \caption{}
 \end{figure}
 \begin{figure}[h]
-    \centering
-    \includegraphics[width=0.65\columnwidth]{svmli.png}
-    \caption{SVM, linear kernel}
-    % \includegraphics[width=0.5\textwidth]{svmrbf.png}
-    % \caption{Confusion matrix for SVM, RBF kernel.}
-    % \label{fig:left}
+    \begin{subtable}{0.5\textwidth}
+        \centering
+        \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
+        \hline
+            % Linear Kernel & ~ & ~ & ~ & ~ \\ \hline
+            ~ & precision & recall & f1-score & support \\ \hline
+            ~ & ~ & ~ & ~ & ~ \\ \hline
+            1 & 0.62 & 0.41 & 0.5 & 2774 \\ \hline
+            2 & 0.58 & 0.87 & 0.7 & 5064 \\ \hline
+            3 & 0 & 0 & 0 & 1565 \\ \hline
+            ~ & ~ & ~ & ~ & ~ \\ \hline
+            accuracy & ~ & ~ & 0.59 & 9403 \\ \hline
+            macro avg & 0.4 & 0.43 & 0.4 & 9403 \\ \hline
+            weighted avg & 0.5 & 0.59 & 0.52 & 9403 \\ \hline
+        \end{tabular}}
+        \caption{Classification report for SVM with linear kernel}
+    \end{subtable}
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.65\columnwidth]{svmli.png}
+        \caption{SVM, linear kernel}
+    \end{subfigure}
+    \caption{}
 \end{figure}
-\begin{figure}
-    % \includegraphics[width=\textwidth]{svmli.png}
-    % \caption{Confusion matrix for SVM, linear kernel.}
-    \centering
-    \includegraphics[width=0.65\columnwidth]{logisticWithOutliers.png}
-    \caption{Logistic with outliers}
-    % \label{fig:right}
+\begin{figure}[h]
+    \begin{subtable}{0.5\textwidth}
+        \centering
+        \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
+        \hline
+            % Logistic w/ outliers & ~ & ~ & ~ & ~ \\ \hline
+            ~ & precision & recall & f1-score & support \\ \hline
+            ~ & ~ & ~ & ~ & ~ \\ \hline
+            1 & 0.63 & 0.42 & 0.5 & 4317 \\ \hline
+            2 & 0.59 & 0.82 & 0.69 & 8022 \\ \hline
+            3 & 0.47 & 0.17 & 0.25 & 2632 \\ \hline
+            ~ & ~ & ~ & ~ & ~ \\ \hline
+            accuracy & ~ & ~ & 0.59 & 14971 \\ \hline
+            macro avg & 0.56 & 0.47 & 0.48 & 14971 \\ \hline
+            weighted avg & 0.58 & 0.59 & 0.56 & 14971 \\ \hline
+        \end{tabular}}
+        \caption{Classification report for logistic model with outliers}
+    \end{subtable}
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.65\columnwidth]{logisticWithOutliers.png}
+        \caption{Logistic with outliers}
+    \end{subfigure}
+    \caption{}
 \end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.65\columnwidth]{logisticNoOutliers.png}
-    \caption{Logistic with no outliers}
-    % \includegraphics[width=0.5\textwidth]{svmrbf.png}
-    % \caption{Confusion matrix for SVM, RBF kernel.}
-    % \label{fig:left}
+\begin{figure}[h]
+    \begin{subtable}{0.5\textwidth}
+        \centering
+        \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
+        \hline
+            % Logistic w/o outliers & ~ & ~ & ~ & ~ \\ \hline
+            ~ & precision & recall & f1-score & support \\ \hline
+            ~ & ~ & ~ & ~ & ~ \\ \hline
+            1 & 0.6 & 0.37 & 0.45 & 3483 \\ \hline
+            2 & 0.61 & 0.81 & 0.69 & 7642 \\ \hline
+            3 & 0.5 & 0.29 & 0.36 & 2719 \\ \hline
+            ~ & ~ & ~ & ~ & ~ \\ \hline
+            accuracy & ~ & ~ & 0.59 & 13844 \\ \hline
+            macro avg & 0.57 & 0.49 & 0.5 & 13844 \\ \hline
+            weighted avg & 0.58 & 0.59 & 0.57 & 13844 \\ \hline
+        \end{tabular}}
+        \caption{Classification report for logistic model with no outliers}
+    \end{subtable}
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.65\columnwidth]{logisticNoOutliers.png}
+        \caption{Logistic with no outliers}
+    \end{subfigure}
+    \caption{}
 \end{figure}
-% \caption{Confusion matrices for the models}
-
 \clearpage
+\begin{multicols}{2}
 \section*{Conclusion and discussion}
 Of the three different models we trained, SVM model using the RBF Kernel yielded the highest
 accuracy of 0.62. In our logistic model, removing the outliers caused a decrease in precison
@@ -231,7 +228,6 @@ been caused by a much lower sample size when compared to entries of a poor or st
 the SVM using the linear kernel was unable to report precision, recall, and f1-score for high credit scores,
 meaning that there was an insufficient amount of data correctly predict it. To fix some of these issues,
 we could modify the training data to contain an equal number of good, standard, and poor credit score samples. 
-\clearpage
 
 \section*{References}
 \textbf{Dataset}\\
@@ -263,6 +259,7 @@ Research, 297(3), 1178-1192. doi:10.1016/j.ejor.2021.06.053
 %  S\&P Global Market Intelligence, 30 Nov. 2020, 
 %  www.spglobal.com/marketintelligence/en/news-insights/blog/machine-learning
 %  -and-credit-risk-modelling. 
+\end{multicols}
 \end{document}
 
 
