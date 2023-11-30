@@ -1,7 +1,7 @@
 # ECS171-Project
 Machine learning project for ECS-171
 ## TODO
-- Front-end
+- Front-end (done)
 - Create multinomial logistic regression model (done)
 - Evaluate model via confusion matrix (done)
 
