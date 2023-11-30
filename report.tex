@@ -93,10 +93,24 @@ multinomial logistic regression model. Additionally, we used Streamlit to host o
 
 
 \section*{Experimental results}
-Below are the classification reports for each of the models:\\
+The Python library scikit-learn was used to create all four models. Both SVM models preserve default values aside from the change
+in kernel type. The two multinomial logistic regression models also preserve default values aside from setting the maximum iterations
+to two thousand, specifying the multi\_class parameter to ``multinomial'' and using the limited-memory BFGS solver.
+For all models, the ``Standard'' credit score was most likely to be categorized correctly, followed by ``Poor'' and ``Good''. 
+However, all models have relatively low accuracy overall, ranging from 0.59 to 0.62. The SVM with a RBF kernel performed the best with an
+accuracy of 0.62 (Table 1). \\
+In an attempt to improve the accuracy of the logistic regression model, which was performing the poorest, we removed outliers within the dataset.
+This had very little impact on the overall accuracy, but the f1-score for the ``Good'' credit score improved the most, going from 0.25 to 0.36 (Table 4).
+Interestingly, the SVM model with a linear kernel was unable to classify a ``Good'' score at all, with zeroes for precision, 
+recall, and f1-score (Table 2). All models had a tendency to misclassify the ``Standard'' category the most as either ``Poor'' or 
+``Good'' at similar frequency. 
+
+\section*{Conclusion and discussion}
+\clearpage
+% Below are the classification reports for each of the models:
 \begin{table}[!ht]
     \centering
-    \resizebox{1.1\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
+    \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
     \hline
         % RBF Kernel & ~ & ~ & ~ & ~ \\ \hline
         ~ & precision & recall & f1-score & support \\ \hline
@@ -111,9 +125,10 @@ Below are the classification reports for each of the models:\\
     \end{tabular}}
     \caption{Classification report for SVM with RBF kernel}
 \end{table}
+% \vspace*{-5mm}
 \begin{table}[!ht]
     \centering
-    \resizebox{1.1\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
+    \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
     \hline
         % Linear Kernel & ~ & ~ & ~ & ~ \\ \hline
         ~ & precision & recall & f1-score & support \\ \hline
@@ -128,9 +143,10 @@ Below are the classification reports for each of the models:\\
     \end{tabular}}
     \caption{Classification report for SVM with linear kernel}
 \end{table}
+% \vspace*{-5mm}
 \begin{table}[!ht]
     \centering
-    \resizebox{1.1\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
+    \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
     \hline
         % Logistic w/ outliers & ~ & ~ & ~ & ~ \\ \hline
         ~ & precision & recall & f1-score & support \\ \hline
@@ -145,9 +161,10 @@ Below are the classification reports for each of the models:\\
     \end{tabular}}
     \caption{Classification report for logistic model with outliers}
 \end{table}
+% \vspace*{-5mm}
 \begin{table}[!ht]
     \centering
-    \resizebox{1.1\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
+    \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
     \hline
         % Logistic w/o outliers & ~ & ~ & ~ & ~ \\ \hline
         ~ & precision & recall & f1-score & support \\ \hline
@@ -196,8 +213,9 @@ Below are the classification reports for each of the models:\\
 \end{figure}
 % \caption{Confusion matrices for the models}
 
+
 \clearpage
-\section*{Conclusion and discussion}
+
 
 \section*{References}
 \textbf{Dataset}\\
