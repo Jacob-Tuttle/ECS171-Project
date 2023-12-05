@@ -1,5 +1,6 @@
 
 .idea/
+# ignore latex build
 *.aux
 *.fdb_latexmk
 *.fls
@@ -7,3 +8,5 @@
 *.synctex.gz
 # Jupyter Notebook
 .ipynb_checkpoints
+# ignore streamlit cache files
+*.pyc
