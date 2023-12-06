@@ -7,11 +7,11 @@ svmLinear = joblib.load("svm_linear_model.pkl")
 
 svmRBF = joblib.load("svm_rbf_model.pkl")
 input = {
-    'Delay_from_due_date': 1,
-    'Num_of_Delayed_Payment': 1,
-    'Outstanding_Debt': 1,
-    'Credit_Utilization_Ratio': 1,
-    'Credit_History_Age': 1,
+    'Delay_from_due_date': 3,
+    'Num_of_Delayed_Payment': 0,
+    'Outstanding_Debt': 0,
+    'Credit_Utilization_Ratio': 0,
+    'Credit_History_Age': 0,
 }
 
 df = pd.DataFrame([input])
