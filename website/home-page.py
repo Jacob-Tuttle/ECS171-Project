@@ -19,7 +19,7 @@ st.write("Current Working Directory:", os.getcwd())
 
 st.header('ECS-171 Project - Classify Credit Score', divider='blue')
 
-svmRBF = joblib.load("svm_rbf_model.pkl")
+svmRBF = joblib.load("website/svm_rbf_model.pkl")
 delay_from_due_date = st.slider("Delay from Due Date", 0, 50, 1)
 num_of_delayed_payment = st.slider("Number of Delayed Payments", 0, 20, 1)
 outstanding_debt = st.slider("Outstanding Debt", 0, 5000, 1)
