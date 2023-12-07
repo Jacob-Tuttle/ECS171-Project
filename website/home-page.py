@@ -14,12 +14,10 @@ import logistic
 from outliers import removeOutliers
 import svm
 
-import os
-st.write("Current Working Directory:", os.getcwd())
-
 st.header('ECS-171 Project - Classify Credit Score', divider='blue')
 
 svmRBF = joblib.load("website/svm_rbf_model.pkl")
+logistic = joblib.load("website/logistic_model.pkl")
 delay_from_due_date = st.slider("Delay from Due Date", 0, 50, 1)
 num_of_delayed_payment = st.slider("Number of Delayed Payments", 0, 20, 1)
 outstanding_debt = st.slider("Outstanding Debt", 0, 5000, 1)
@@ -35,9 +33,11 @@ input = {
 }
 
 df = pd.DataFrame([input])
-prediction = svmRBF.predict(df)
+svmPred = svmRBF.predict(df)
+logicPred = logistic.predict(df)
 dict = {}
 dict[1] = "Bad"
 dict[2] = "Standard"
 dict[3] = "Good"
-st.write(f"Predicted Credit Score: {dict[prediction[0]]}")
+st.write(f"SVM Predicted Credit Score: {dict[svmPred[0]]}")
+st.write(f"Logistic Predicted Credit Score: {dict[logicPred[0]]}")
