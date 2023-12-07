@@ -36,5 +36,8 @@ input = {
 
 df = pd.DataFrame([input])
 prediction = svmRBF.predict(df)
-
-st.write(f"Predicted Credit Score: {prediction[0]}")
+dict = {}
+dict[1] = "Bad"
+dict[2] = "Standard"
+dict[3] = "Good"
+st.write(f"Predicted Credit Score: {dict[prediction[0]]}")
