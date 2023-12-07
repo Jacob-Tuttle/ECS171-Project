@@ -39,5 +39,5 @@ dict = {}
 dict[1] = "Bad"
 dict[2] = "Standard"
 dict[3] = "Good"
-st.write(f"SVM Predicted Credit Score: {dict[svmPred[0]]}")
+st.write(f"Non-Linear SVM Predicted Credit Score: {dict[svmPred[0]]}")
 st.write(f"Logistic Predicted Credit Score: {dict[logicPred[0]]}")
