@@ -16,7 +16,7 @@ import svm
 
 st.header('ECS-171 Project - Classify Credit Score', divider='blue')
 
-svmRBF = joblib.load("website/nonlinear_rbf_svm.pkl")
+svmRBF = joblib.load("website/nonlinear_rfb_svm.pkl")
 logistic = joblib.load("website/logistic_model.pkl")
 delay_from_due_date = st.slider("Delay from Due Date", 0, 50, 1)
 num_of_delayed_payment = st.slider("Number of Delayed Payments", 0, 20, 1)
