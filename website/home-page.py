@@ -15,7 +15,7 @@ from outliers import removeOutliers
 import svm
 
 import os
-print("Current Working Directory:", os.getcwd())
+st.write("Current Working Directory:", os.getcwd())
 
 st.header('ECS-171 Project - Classify Credit Score', divider='blue')
 
