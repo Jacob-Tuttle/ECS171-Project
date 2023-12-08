@@ -1,5 +1,5 @@
 # ECS171-Project
-Machine learning project for ECS-171
+To see the actual source files for the models, check the ``notebooks`` directory.
 <!-- ## TODO
 - Front-end (done)
 - Create multinomial logistic regression model (done)
