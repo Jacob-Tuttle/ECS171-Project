@@ -27,3 +27,6 @@ Machine learning project for ECS-171
 - About 5 pages of text and at least 4-5 figures in position or at the end of the document
         - The Github link to the source code of your project should be included in your final report.   
         - One page to describe the project roadmap including project milestones should be included in the report.
+
+## To run website demo locally
+-From the repository directory, open a terminal and run ```streamlit run .\website\home-page.py```
