@@ -30,4 +30,5 @@ Machine learning project for ECS-171
 ## Website: https://ecs171-project.streamlit.app/
 
 ## To run website demo locally
--From the repository directory, open a terminal and run ```streamlit run .\website\home-page.py```
+- From the repository directory, open a terminal and run ```streamlit run .\website\home-page.py```
+- Run ```pip install streamlit``` if you don't already have streamlit
