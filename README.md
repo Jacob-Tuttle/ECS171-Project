@@ -1,6 +1,6 @@
 # ECS171-Project
 Machine learning project for ECS-171
-## TODO
+<!-- ## TODO
 - Front-end (done)
 - Create multinomial logistic regression model (done)
 - Evaluate model via confusion matrix (done)
@@ -26,7 +26,8 @@ Machine learning project for ECS-171
 - Include your findings in the conclusion section.     
 - About 5 pages of text and at least 4-5 figures in position or at the end of the document
         - The Github link to the source code of your project should be included in your final report.   
-        - One page to describe the project roadmap including project milestones should be included in the report.
+        - One page to describe the project roadmap including project milestones should be included in the report. -->
+## Website: https://ecs171-project.streamlit.app/
 
 ## To run website demo locally
 -From the repository directory, open a terminal and run ```streamlit run .\website\home-page.py```
