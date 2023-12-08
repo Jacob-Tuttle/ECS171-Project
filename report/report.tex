@@ -1,34 +1,48 @@
-\documentclass[11pt, twocolumn]{article}
-\usepackage{multicol}
+\documentclass[conference, 11pt]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
 \usepackage{graphicx}
-\usepackage{fancyhdr}
+\usepackage{textcomp}
+\usepackage{xcolor}
 \usepackage{wrapfig}
 \usepackage{subcaption}
-\usepackage[margin=1.5in]{geometry}
-% Introduction and background (1 page)
-% Literature review (1/2 page)
-% Dataset Description and exploratory data analysis of the dataset (1-2 page)
-% Proposed methodology (1 page)
-% Experimental results (2-3 pages)
-% Conclusion and discussion -- you can include the project roadmap here too (1/2 page)
-% References (no limit)
-\linespread{1}
-\pagestyle{fancy}
-\title{\textbf{Credit Score Classification}}
-\author{Kyle Jow, Jimmy Nguyen, Kyle Pickle, Jacob Tuttle, Kris Wong}
-\date{December 2023}
-
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
-\pagenumbering{gobble}
+
+\title{Credit Score Classification\\
+{\footnotesize GitHub repository: https://github.com/Jacob-Tuttle/ECS171-Project/tree/main}
+}
+
+\author{
+\IEEEauthorblockN{1\textsuperscript{st} Kyle Jow}
+\and
+\IEEEauthorblockN{2\textsuperscript{nd} Kyle Pickle}
+\and
+\IEEEauthorblockN{3\textsuperscript{rd} Jimmy Nguyen}
+\and
+\IEEEauthorblockN{4\textsuperscript{th} Jacob Tuttle}
+\and
+\IEEEauthorblockN{5\textsuperscript{th} Kris Wong}
+
+}
+
 \maketitle
-\newpage
-\pagenumbering{arabic}
-\pagestyle{fancy}
-\fancyhf{} % clear header and footer
-\fancyhead[R]{Credit Score Classification}
-\fancyfoot[R]{\thepage}
-\clearpage
-\section*{Introduction \& background}
+
+% \begin{abstract}
+% This document is a model and instructions for \LaTeX.
+% This and the IEEEtran.cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes, 
+% or Math in Paper Title or Abstract.
+% \end{abstract}
+
+% \begin{IEEEkeywords}
+% component, formatting, style, styling, insert
+% \end{IEEEkeywords}
+
+\section{Introduction}
 A common problem in the finance and banking industry is assessing the risk involved with lending money to clients.
 To better assess a borrower's creditworthiness, lenders formulate and assign “credit scores” to their clients, based on preconceived data 
 like income, spending, and credit history.
@@ -54,7 +68,7 @@ Nearly all client data is now digitized by banks, and with numerous complex vari
 through machine learning is an ideal way to not only predict creditworthiness but constantly tune the equations and hyperparameters used
 to determine it in the midst of a fluctuating, real-world economy.
 
-\section*{Literature review}
+\section{Literature review}
 Economists and researchers alike have utilized a variety of machine learning algorithms to better predict credit scores and investment risk.
 Some common implementations include decision trees, logistic regression, and Support Vector Machines (SVM).
 \vspace{5mm}\newline
@@ -66,23 +80,23 @@ While we could now consider this approach a decision-tree model, Dastile et al. 
 transparency in lending decisions has led to the prevalence of logistic regression models, known for their simplicity and interpretability.
 While sophisticated, higher-accuracy machine learning models have arisen over time, their opacity continues to raise concerns.
 In response, Dastile et al. go on to note several key machine learning techniques between 2010 and 2018 that have created a guided
-framework of credit scoring, combining both accuracy and transparency in lending decisions.
+framework of credit scoring, combining both accuracy and transparency in lending decisions [1].
 \vspace{5mm}\newline
 % https://www.sciencedirect.com/science/article/pii/S0377221721005695#sec0012
 One modern approach to credit scoring comes from Dumitrescu et. al., who use a particular model called Penalised Logistic Tree Regression
-(PLTR) for credit score classification with an improved logistic regression model that has non-linear decision tree effects.
+(PLTR) for credit score classification with an improved logistic regression model that has non-linear decision tree effects [2].
 It is able to predict credit score more accurately than the benchmark logistic regression commonly used in the industry, and on a level
 that is comparable to more accurate random forest models.
 This is because it is able to capture recursive, multi-variable traits in the data unnoticed by a typical logistic regression.
 Dumitrescu et. al. use multiple datasets to test the robustness of the model and argue that PLTR preserves the needed transparency and
 interpretability that come with logistic regression.
 
-\section*{Dataset description and exploratory data analysis}
+\section{Dataset description and exploratory data analysis}
 The dataset contains 27 features. The features we will be focusing on in order
 to classify a person's credit score, which is categorical, into either ``good", ``standard", or ``poor" credit
 will be features that had the most correlation with credit score according to the heat map
 generated from this data and features used in real-life credit score assessing. Although the Credit\_Utilization\_Ratio attribute has little 
-correlation to credit score, this feature is used to assess credit in real life, so we kept it. (Figure 1).\\
+correlation to credit score, this feature is used to assess credit in real life, so we kept it. (Figure 1).
 \begin{figure}[h]
     \begin{center}
     \includegraphics[width=\columnwidth]{images/credscoreheatmap.png}
@@ -90,7 +104,7 @@ correlation to credit score, this feature is used to assess credit in real life,
     \label{fig:figure1}
     \end{center}
 \end{figure}
-\section*{Proposed methodology}
+\section{Proposed methodology}
 From the literature review and the fact that this problem involves multiclassification,
 we decided to make and compare two SVM models with a linear and RBF kernel and one 
 multinomial logistic regression model. We trained the logistic regression model with and without
@@ -98,7 +112,7 @@ outliters to determine the impact on the accuracy. For all three of our models, 
 the standard 80:20 training to testing split in order to benchmark the performance on unseen
 data. Additionally, we used Streamlit to host our model online.
 
-\section*{Experimental results}
+\section{Experimental results}
 The Python library scikit-learn was used to create all four models. Both SVM models preserve default values aside from the change
 in kernel type. The two multinomial logistic regression models also preserve default values aside from setting the maximum iterations
 to two thousand, specifying the multi\_class parameter to ``multinomial'' and using the limited-memory BFGS solver.
@@ -114,7 +128,97 @@ Since our data was imbalanced, we tested if a combination of oversampling and re
 The result was that changes in accuracy were minimal. The SVM with a RBF kernel achieved a slightly lower accuracy while the SVM with a linear kernel
 achieved a slightly higher accuracy. Oversampling, however, allowed both SVM models to achieve greater precision, recall,
 and f1-scores.
+\section{Project Roadmap}
+Our problem from a scientifc standpoint
+involves creating a reliable and predic-
+tive model for assessing the creditworthi-
+ness of individuals. This model has to
+be created with various amounts of in-
+put data and different features that goes
+towards creditworthiness. This formula-
+tion of credit score is complex and in-
+volves constant refinement as new fea-
+tures in the future can be used at input
+data.
+\vspace{5mm}\newline
+To solve this problem, we must be edu-
+cated on the problem first and that comes
+with background studying and lots of re-
+search on the topic of credit score. Our
+group wants to finish this around the first
+week after turning in the one-page write
+up about our project. Since research is
+very important in any project, we will
+spend days to study up on the topic to
+get the most information we can.
+The next part of our project will con-
+sist of dataset understanding and ex-
+ploratory data analysis. In this part of
+our project, we must spend time to un-
+derstand our dataset fully to know how
+to clean it up. The dataset is just as
+important as the model as the dataset is
+what helps the model learn to predict the
+credit scores to solve our problem. We
+will spend a total of 2 days or more af-
+ter the background study to explore our
+dataset. We will make many visualiza-
+tions to understand our dataset.
+After cleaning and understanding our
+dataset, we will begin to build our ac-
+curate prediction models. We estimate
+around 1-2 weeks on this as developing
+the models well will give use more accu-
+rate predictions. We estimate a lot of
+trial and error since we will be build-
+ing multiple different models to find the
+best model for our dataset. We will be
+building a multinomial logistic regression
+model, a SVM model with the linear ker-
+nel, and a SVM model using the RBF
+kernel.
+\vspace{5mm}\newline
+After building the models, we must eval-
+uate each of them to find the best model.
+Evaluating these models should take max
+a week, because we will be focusing on
+accuracy, precision, recall, and f1-score.
+After a good evaluation of the models,
+we will be picking the best one keeping in
+mind also the constraints of our dataset.
+The last thing we need to do is building
+the basic web-based front-end to invoke
+and run the model. Our group plans to
+take the remaining amount of time we
+have left to build the web-based front-
+end and continue to test our model until
+we believe there is nothing else we can
+do.
+\section*{Conclusion and discussion}
+Of the three different models we trained, SVM model using the RBF Kernel yielded the highest
+accuracy of 0.62. In our logistic model, removing the outliers caused a decrease in precison
+and recall when predicting poor credit scores, but an increase when predicting standard and good
+scores. Coincidentally, both logistic models ended up with an identical overall accuracy.
+\vspace{5mm}\newline
+The SVM model using the RBF kernel, had a noticibly higher precision when predicting poor credit
+scores, meaning that a detected poor credit score is likely to be correct. This model also had a
+very high recall for standard credit scores, meaning that it was able to correctly identify almost all
+instances with a standard score.
+\vspace{5mm}\newline
+In all of our models, it was very difficult to correctly identify a high credit score. This could have
+been caused by a much lower sample size when compared to entries of a poor or standard score. In particular,
+the SVM using the linear kernel was unable to report precision, recall, and f1-score for high credit scores,
+meaning that there was an insufficient amount of data correctly predict it. To fix some of these issues,
+we could modify the training data to contain an equal number of good, standard, and poor credit score samples. 
 
+\begin{thebibliography}{00}
+\bibitem{b1} Dastile, X., Celik, T., \& Potsane, M. (2020).
+Statistical and machine learning models in credit scoring: A systematic literature survey. Applied Soft Computing, 91. doi:10.1016/j.asoc.2020.106263.
+\bibitem{b2} Dumitrescu, E., Hué, S., Hurlin, C., \& Tokpavi, S. (2022). 
+Machine learning for credit scoring: Improving logistic regression 
+with non-linear decision-tree effects. European Journal of Operational 
+Research, 297(3), 1178-1192. doi:10.1016/j.ejor.2021.06.053
+\end{thebibliography}
 
 \begin{figure*}[h]
     % Below are the classification reports for each of the models:
@@ -263,114 +367,6 @@ and f1-scores.
     \end{subfigure}
     \caption{}
 \end{figure*}
-% undersampling
-% \begin{figure*}[h]
-%     \begin{subtable}{0.5\textwidth}
-%         \centering
-%         \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
-%             \hline
-%             ~ & precision & recall & f1-score & support \\ \hline
-%             ~ & ~ & ~ & ~ & ~ \\ \hline
-%             1 & 0.6 & 0.65 & 0.62 & 2774 \\ \hline
-%             2 & 0.72 & 0.4 & 0.51 & 5064 \\ \hline
-%             3 & 0.35 & 0.8 & 0.49 & 1565 \\ \hline
-%             ~ & ~ & ~ & ~ & ~ \\ \hline
-%             accuracy & ~ & ~ & 0.54 & 9403 \\ \hline
-%             macro avg & 0.56 & 0.62 & 0.54 & 9403 \\ \hline
-%             weighted avg & 0.62 & 0.54 & 0.54 & 9403 \\ \hline
-%         \end{tabular}}
-%         \caption{}
-%     \end{subtable}
-%     \begin{subfigure}{0.5\textwidth}
-%         \centering
-%         \includegraphics[width=0.65\columnwidth]{images/liundersample.png}
-%         \caption{}
-%     \end{subfigure}
-%     \caption{SVM linear w/ undersampling}
-% \end{figure*}
-% \begin{figure*}[h]
-%     \begin{subtable}{0.5\textwidth}
-%         \centering
-%         \resizebox{\columnwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
-%             \hline
-%             ~ & precision & recall & f1-score & support \\ \hline
-%             ~ & ~ & ~ & ~ & ~ \\ \hline
-%             1 & 0.6 & 0.73 & 0.66 & 2774 \\ \hline
-%             2 & 0.77 & 0.39 & 0.52 & 5064 \\ \hline
-%             3 & 0.36 & 0.8 & 0.5 & 1565 \\ \hline
-%             ~ & ~ & ~ & ~ & ~ \\ \hline
-%             accuracy & ~ & ~ & 0.56 & 9403 \\ \hline
-%             macro avg & 0.57 & 0.64 & 0.56 & 9403 \\ \hline
-%             weighted avg & 0.65 & 0.56 & 0.55 & 9403 \\ \hline
-%         \end{tabular}}
-%         \caption{}
-%     \end{subtable}
-%     \begin{subfigure}{0.5\textwidth}
-%         \centering
-%         \includegraphics[width=0.65\columnwidth]{images/rbfundersample.png}
-%         \caption{}
-%     \end{subfigure}
-%     \caption{SVM RBF w/ undersampling}
-% \end{figure*}
-\clearpage
-\twocolumn
-\section*{Conclusion and discussion}
-Of the three different models we trained, SVM model using the RBF Kernel yielded the highest
-accuracy of 0.62. In our logistic model, removing the outliers caused a decrease in precison
-and recall when predicting poor credit scores, but an increase when predicting standard and good
-scores. Coincidentally, both logistic models ended up with an identical overall accuracy.
-\vspace{5mm}\newline
-The SVM model using the RBF kernel, had a noticibly higher precision when predicting poor credit
-scores, meaning that a detected poor credit score is likely to be correct. This model also had a
-very high recall for standard credit scores, meaning that it was able to correctly identify almost all
-instances with a standard score.
-\vspace{5mm}\newline
-In all of our models, it was very difficult to correctly identify a high credit score. This could have
-been caused by a much lower sample size when compared to entries of a poor or standard score. In particular,
-the SVM using the linear kernel was unable to report precision, recall, and f1-score for high credit scores,
-meaning that there was an insufficient amount of data correctly predict it. To fix some of these issues,
-we could modify the training data to contain an equal number of good, standard, and poor credit score samples. 
 
-\section*{References}
-\textbf{Dataset}\\
-https://www.kaggle.com/datasets/parisrohan/credit-score-classification/data
-\vspace{5mm}\newline
-\textbf{Literature Review}\\
-% https://www.sciencedirect.com/science/article/pii/S1568494620302039
-Dastile, X., Celik, T., \& Potsane, M. (2020).
-Statistical and machine learning models in credit scoring: A systematic literature survey.
-Applied Soft Computing, 91. doi:10.1016/j.asoc.2020.106263.
-\vspace{5mm}\newline
-% https://www.sciencedirect.com/science/article/abs/pii/S0377221721005695
-Dumitrescu, E., Hué, S., Hurlin, C., \& Tokpavi, S. (2022). 
-Machine learning for credit scoring: Improving logistic regression 
-with non-linear decision-tree effects. European Journal of Operational 
-Research, 297(3), 1178-1192. doi:10.1016/j.ejor.2021.06.053
-%   talks about a modified logistic regression called "penalised 
-%   logistic tree regression" that combines elements of decision trees and
-%   logistic reg based on the adaptive lasso logistic regression model
-% https://link.springer.com/chapter/10.1007/978-3-030-66891-4_5
-% Guidolin, M., Pedio, M. (2021). Sharpening the Accuracy of Credit Scoring 
-% Models with Machine Learning Algorithms. In: Consoli, S., Reforgiato Recupero, 
-% D., Saisana, M. (eds) Data Science for Economics and Finance. Springer, Cham.
-% https://doi.org/10.1007/978-3-030-66891-4\_5
-% https://sci-hub.se/10.1057/jors.2009.129
-% https://www.spglobal.com/marketintelligence/en/news-insights/blog/machine-learning-and-credit-risk-modelling
-% Yue, Lei, and Luka Vidovic. “Machine Learning and Credit Risk Modelling.”
-%  \textit{Machine Learning and Credit Risk Modelling $\vert$ S\&P Global Market Intelligence}, 
-%  S\&P Global Market Intelligence, 30 Nov. 2020, 
-%  www.spglobal.com/marketintelligence/en/news-insights/blog/machine-learning
-%  -and-credit-risk-modelling. 
+
 \end{document}
-
-
-% some drafts:
-% https://sci-hub.se/10.1057/jors.2009.129
-% interesting paper on showing weaknesses of evaluation statistics. not sure if its
-% all that relevant though
-% Hand and Zhou observe the performances of nine supervised learning 
-% classification models in classifying customers in retail banking and discuss how 
-% different commonly used methods such as area under curve (AUC), Gini measures, Kolmogorov–Smirnov statistic (KS), 
-% used in  evaluating performance may give misleading conclusions due to 
-% fundamental weaknesses behind these methods. For example, the KS statistic concluded that classification 
-% trees performed the best while AUC ranks the model near the bottom.\\
